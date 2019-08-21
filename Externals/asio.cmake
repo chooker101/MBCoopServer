@@ -1,21 +1,12 @@
-add_library(asio STATIC)
+add_library(asio INTERFACE)
 
 file(GLOB_RECURSE inc
-    asio/asio/include/*.c 
-    asio/asio/include/*.cpp 
     asio/asio/include/*.h 
     asio/asio/include/*.hpp
 )
 
-file(GLOB_RECURSE src 
-    asio/asio/src/*.c 
-    asio/asio/src/*.cpp 
-    asio/asio/src/*.h 
-    asio/asio/src/*.hpp
-)
-
-target_compile_options(asio
-PRIVATE
+target_compile_definitions(asio
+INTERFACE
 	ASIO_STANDALONE
 	ASIO_HAS_STD_TYPE_TRAITS
 	ASIO_HAS_STD_ADDRESSOF
@@ -25,16 +16,13 @@ PRIVATE
 )
 
 target_sources(asio
-PRIVATE
+INTERFACE
     ${inc}
-    ${src}
 )
 
 target_include_directories(asio
-PUBLIC
+INTERFACE
 	"asio/asio/include"
-PRIVATE
-	"asio/asio/src"
 )
 
 source_group(asio ${CMAKE_CURRENT_SOURCE_DIR}/asio)
