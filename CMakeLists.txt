@@ -9,5 +9,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON) # enables folder structures in IDEs
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+include(Tools/vs_filter_structure.cmake)
+
 add_subdirectory(Externals)
 add_subdirectory(Projects)

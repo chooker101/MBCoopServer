@@ -28,5 +28,3 @@ target_include_directories(asio
 INTERFACE
 	"asio/asio/include"
 )
-
-source_group(asio ${CMAKE_CURRENT_SOURCE_DIR}/asio)

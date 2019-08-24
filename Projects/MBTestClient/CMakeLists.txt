@@ -41,6 +41,6 @@ PRIVATE
   asio
 )
 
-source_group("MBTestClient" ${CMAKE_CURRENT_SOURCE_DIR})
-source_group("MBTestClient\\Source" ${CMAKE_CURRENT_SOURCE_DIR}/Source)
-source_group("MBTestClient\\Include" ${CMAKE_CURRENT_SOURCE_DIR}/Include)
+vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${inc}")
+vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${src}")
+vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${pch}")

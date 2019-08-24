@@ -41,7 +41,6 @@ PRIVATE
   asio
 )
 
-source_group("MBCoopServer" ${CMAKE_CURRENT_SOURCE_DIR})
-source_group("MBCoopServer\\Source" ${CMAKE_CURRENT_SOURCE_DIR}/Source)
-source_group("MBCoopServer\\Source\\HttpServer" ${CMAKE_CURRENT_SOURCE_DIR}/Source/HttpServer)
-source_group("MBCoopServer\\Include" ${CMAKE_CURRENT_SOURCE_DIR}/Include)
+vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${inc}")
+vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${src}")
+vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${pch}")
