@@ -15,6 +15,6 @@ namespace mbcp
 		DataParser() = default;
 	public:
 		static DataParser& Instance();
-		std::string HandleData(std::string& rawData);
+		uint8_t* InterpretData(std::string& rawData);
 	};
 }

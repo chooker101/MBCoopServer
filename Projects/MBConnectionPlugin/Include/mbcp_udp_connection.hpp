@@ -3,7 +3,7 @@
 
 namespace mbcp 
 {
-	class UdpConnection : ConnectionInterface
+	class UdpConnection : public ConnectionInterface
 	{
 
 	};

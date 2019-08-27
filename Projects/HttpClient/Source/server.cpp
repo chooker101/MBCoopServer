@@ -16,12 +16,12 @@ namespace http {
 namespace server {
 
 server::server(const std::string& address, const std::string& port,
-    const std::string& doc_root)
+    const std::string& doc_root, mbcp::ConnectionInterface* connectionInterface)
   : io_context_(1),
     signals_(io_context_),
     acceptor_(io_context_),
     connection_manager_(),
-    request_handler_()
+	connection_interface_(connectionInterface)
 {
   // Register to handle the signals that indicate when the server should exit.
   // It is safe to register for the same signal multiple times in a program,
@@ -55,6 +55,11 @@ void server::run()
   io_context_.run();
 }
 
+server::~server()
+{
+	delete(connection_interface_);
+}
+
 void server::do_accept()
 {
   acceptor_.async_accept(
@@ -70,7 +75,7 @@ void server::do_accept()
         if (!ec)
         {
           connection_manager_.start(std::make_shared<connection>(
-              std::move(socket), connection_manager_, request_handler_));
+              std::move(socket), connection_manager_, connection_interface_));
         }
 
         do_accept();
@@ -89,6 +94,7 @@ void server::do_await_stop()
         connection_manager_.stop_all();
       });
 }
+
 
 } // namespace server
 } // namespace http

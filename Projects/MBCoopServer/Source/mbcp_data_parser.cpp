@@ -1,5 +1,4 @@
 #include <precompiled.hpp>
-#include <iostream>
 #include <mbcp_data_parser.hpp>
 
 using namespace mbcp;
@@ -15,7 +14,7 @@ DataParser& mbcp::DataParser::Instance()
 	return *pInstance;
 }
 
-std::string mbcp::DataParser::HandleData(std::string& rawData)
+uint8_t* mbcp::DataParser::InterpretData(std::string& rawData)
 {
 	if (rawData.size() < 4)
 	{
@@ -26,6 +25,9 @@ std::string mbcp::DataParser::HandleData(std::string& rawData)
 	while (mCurrentOffsetHex < mFullRecievedLengthHex)
 	{
 		mCurrentDataLength = std::stoi(rawData.substr(mCurrentOffsetHex, 2), nullptr, 16);
-		for (uint8_t i = mCurrentOffsetHex + 2; i < mCurrentDataLength)
+		for (uint8_t i = mCurrentOffsetHex + 2; i < mCurrentDataLength; i += 2)
+		{
+
+		}
 	}
 }

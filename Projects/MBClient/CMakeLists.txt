@@ -1,4 +1,4 @@
-add_executable(MBCoopServer)
+add_executable(MBClient)
 
 file(GLOB_RECURSE inc 
     Include/*.c 
@@ -21,14 +21,14 @@ file(GLOB pch
     *.hpp
 )
 
-target_sources(MBCoopServer 
+target_sources(MBClient 
 PRIVATE
     ${inc}
     ${src}
     ${pch}
 )
 
-target_include_directories(MBCoopServer
+target_include_directories(MBClient
 PUBLIC
 	"Include"
 PRIVATE
@@ -36,9 +36,10 @@ PRIVATE
 	"Source"
 )
 
-target_link_libraries(MBCoopServer
+target_link_libraries(MBClient
 PRIVATE
     MBConnectionPlugin
+    HttpClient
 )
 
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${inc}")

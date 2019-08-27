@@ -3,10 +3,13 @@
 
 namespace mbcp
 {
-	class HttpConnection : ConnectionInterface
+	class HttpConnection : public ConnectionInterface
 	{
 	public:
+		HttpConnection() = default;
 		void RecieveData(std::string& rawData) override final;
 		void SendData(std::string& toSend) override final;
+		std::string& GetDataToSend() override final;
+		~HttpConnection() = default;
 	};
 }

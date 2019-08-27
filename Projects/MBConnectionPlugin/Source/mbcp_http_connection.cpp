@@ -12,3 +12,9 @@ void mbcp::HttpConnection::SendData(std::string& toSend)
 {
 	
 }
+
+std::string & mbcp::HttpConnection::GetDataToSend()
+{
+	mData = "Hello World";
+	return mData;
+}

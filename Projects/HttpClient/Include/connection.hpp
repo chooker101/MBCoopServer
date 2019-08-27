@@ -17,7 +17,7 @@
 #include "reply.hpp"
 #include "request.hpp"
 #include "request_parser.hpp"
-#include "mbcp_request_handler.hpp"
+#include <mbcp_connection_interface.hpp>
 
 namespace http {
 namespace server {
@@ -34,7 +34,7 @@ public:
 
   /// Construct a connection with the given socket.
   explicit connection(asio::ip::tcp::socket socket,
-      connection_manager& manager, mbcp::RequestHandler& handler);
+      connection_manager& manager, mbcp::ConnectionInterface* connectionInterdace);
 
   /// Start the first asynchronous operation for the connection.
   void start();
@@ -56,7 +56,9 @@ private:
   connection_manager& connection_manager_;
 
   /// The handler used to process the incoming request.
-  mbcp::RequestHandler& request_handler_;
+  mbcp::ConnectionInterface* connection_interface_;
+
+  char out_buffer_[2048];
 
   /// Buffer for incoming data.
   std::array<char, 8192> buffer_;

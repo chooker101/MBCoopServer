@@ -17,10 +17,10 @@ namespace http {
 namespace server {
 
 connection::connection(asio::ip::tcp::socket socket,
-    connection_manager& manager, mbcp::RequestHandler& handler)
+    connection_manager& manager, mbcp::ConnectionInterface* connectionInterdace)
   : socket_(std::move(socket)),
     connection_manager_(manager),
-    request_handler_(handler)
+	connection_interface_(connectionInterdace)
 {
 }
 
@@ -48,7 +48,15 @@ void connection::do_read()
 
           if (result == request_parser::good)
           {
-            request_handler_.HandleRequest(request_, reply_);
+			connection_interface_->RecieveData(request_.uri);
+			reply_.status = reply::ok;
+			std::stringstream ss;
+			ss << connection_interface_->GetDataToSend();
+			while (ss.read(out_buffer_, sizeof(out_buffer_)).gcount() > 0)
+				reply_.content.append(out_buffer_, ss.gcount());
+			reply_.headers.resize(1);
+			reply_.headers[0].name = "Content-Length";
+			reply_.headers[0].value = std::to_string(reply_.content.size());
             do_write();
           }
           else if (result == request_parser::bad)

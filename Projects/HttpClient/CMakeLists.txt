@@ -28,8 +28,10 @@ PRIVATE
 )
 
 target_link_libraries(HttpClient
+PUBLIC
+    asio
 PRIVATE
-  asio
+    MBConnectionPlugin
 )
 
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${inc}")

@@ -15,7 +15,7 @@
 #include <string>
 #include "connection.hpp"
 #include "connection_manager.hpp"
-#include "mbcp_request_handler.hpp"
+#include <mbcp_connection_interface.hpp>
 
 namespace http {
 namespace server {
@@ -30,10 +30,12 @@ public:
   /// Construct the server to listen on the specified TCP address and port, and
   /// serve up files from the given directory.
   explicit server(const std::string& address, const std::string& port,
-      const std::string& doc_root);
+      const std::string& doc_root, mbcp::ConnectionInterface* connectionInterface);
 
   /// Run the server's io_context loop.
   void run();
+
+  ~server();
 
 private:
   /// Perform an asynchronous accept operation.
@@ -55,7 +57,7 @@ private:
   connection_manager connection_manager_;
 
   /// The handler for all incoming requests.
-  mbcp::RequestHandler request_handler_;
+  mbcp::ConnectionInterface* connection_interface_;
 };
 
 } // namespace server
