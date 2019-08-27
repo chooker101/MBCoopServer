@@ -26,6 +26,6 @@ std::string mbcp::DataParser::HandleData(std::string& rawData)
 	while (mCurrentOffsetHex < mFullRecievedLengthHex)
 	{
 		mCurrentDataLength = std::stoi(rawData.substr(mCurrentOffsetHex, 2), nullptr, 16);
-		for(uint8_t i = mCurrentOffsetHex + 2; i < mCurrentDataLength)
+		for (uint8_t i = mCurrentOffsetHex + 2; i < mCurrentDataLength)
 	}
 }

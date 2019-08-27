@@ -1,4 +1,4 @@
-add_executable(MBTestClient)
+add_library(MBConnectionPlugin STATIC)
 
 file(GLOB_RECURSE inc 
     Include/*.c 
@@ -14,28 +14,18 @@ file(GLOB_RECURSE src
     Source/*.hpp
 )
 
-file(GLOB pch
-    *.c 
-    *.cpp 
-    *.h 
-    *.hpp
-)
-
-target_sources(MBTestClient 
+target_sources(MBConnectionPlugin 
 PRIVATE
     ${inc}
     ${src}
-    ${pch}
 )
 
-target_include_directories(MBTestClient
+target_include_directories(MBConnectionPlugin
 PUBLIC
 	"Include"
 PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}
 	"Source"
 )
 
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${inc}")
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${src}")
-vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${pch}")

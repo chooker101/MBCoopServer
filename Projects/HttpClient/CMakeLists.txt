@@ -1,4 +1,4 @@
-add_executable(MBTestClient)
+add_library(HttpClient STATIC)
 
 file(GLOB_RECURSE inc 
     Include/*.c 
@@ -14,28 +14,23 @@ file(GLOB_RECURSE src
     Source/*.hpp
 )
 
-file(GLOB pch
-    *.c 
-    *.cpp 
-    *.h 
-    *.hpp
-)
-
-target_sources(MBTestClient 
+target_sources(HttpClient 
 PRIVATE
     ${inc}
     ${src}
-    ${pch}
 )
 
-target_include_directories(MBTestClient
+target_include_directories(HttpClient
 PUBLIC
 	"Include"
 PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}
 	"Source"
+)
+
+target_link_libraries(HttpClient
+PRIVATE
+  asio
 )
 
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${inc}")
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${src}")
-vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${pch}")

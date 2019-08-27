@@ -36,11 +36,6 @@ PRIVATE
 	"Source"
 )
 
-target_link_libraries(MBCoopServer
-PRIVATE
-  asio
-)
-
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${inc}")
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${src}")
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${pch}")

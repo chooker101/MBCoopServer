@@ -1,2 +1,5 @@
+add_subdirectory(HttpClient)
+add_subdirectory(MBConnectionPlugin)
 add_subdirectory(MBCoopServer)
 add_subdirectory(MBTestClient)
+#add_subdirectory(UDPClient)
