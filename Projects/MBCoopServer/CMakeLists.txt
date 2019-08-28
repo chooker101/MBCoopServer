@@ -41,6 +41,10 @@ PRIVATE
     MBConnectionPlugin
 )
 
+add_custom_command(TARGET MBCoopServer PRE_BUILD
+    COMMAND nuget restore "${CMAKE_BINARY_DIR}/MBCoopServer.sln"
+)
+
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${inc}")
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${src}")
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${pch}")
