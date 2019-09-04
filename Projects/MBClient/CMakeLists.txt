@@ -22,24 +22,24 @@ file(GLOB pch
 )
 
 target_sources(MBClient 
-PRIVATE
-    ${inc}
-    ${src}
-    ${pch}
+    PRIVATE
+        ${inc}
+        ${src}
+        ${pch}
 )
 
 target_include_directories(MBClient
-PUBLIC
-	"Include"
-PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}
-	"Source"
+    PUBLIC
+	    "Include"
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+	    "Source"
 )
 
 target_link_libraries(MBClient
-PRIVATE
-    MBConnectionPlugin
-    HttpClient
+    PRIVATE
+        MBConnectionPlugin
+        HttpClient
 )
 
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${inc}")

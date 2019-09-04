@@ -15,16 +15,16 @@ file(GLOB_RECURSE src
 )
 
 target_sources(MBConnectionPlugin 
-PRIVATE
-    ${inc}
-    ${src}
+    PRIVATE
+        ${inc}
+        ${src}
 )
 
 target_include_directories(MBConnectionPlugin
-PUBLIC
-	"Include"
-PRIVATE
-	"Source"
+    PUBLIC
+	    "Include"
+    PRIVATE
+	    "Source"
 )
 
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${inc}")

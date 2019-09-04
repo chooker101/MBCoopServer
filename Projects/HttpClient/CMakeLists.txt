@@ -15,23 +15,23 @@ file(GLOB_RECURSE src
 )
 
 target_sources(HttpClient 
-PRIVATE
-    ${inc}
-    ${src}
+    PRIVATE
+        ${inc}
+        ${src}
 )
 
 target_include_directories(HttpClient
-PUBLIC
-	"Include"
-PRIVATE
-	"Source"
+    PUBLIC
+	    "Include"
+    PRIVATE
+	    "Source"
 )
 
 target_link_libraries(HttpClient
-PUBLIC
-    asio
-PRIVATE
-    MBConnectionPlugin
+    PUBLIC
+        asio
+    PRIVATE
+        MBConnectionPlugin
 )
 
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${inc}")

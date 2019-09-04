@@ -10,11 +10,10 @@ void mbcp::HttpConnection::RecieveData(std::string& rawData)
 
 void mbcp::HttpConnection::SendData(std::string& toSend)
 {
-	
+	mData = toSend;
 }
 
 std::string & mbcp::HttpConnection::GetDataToSend()
 {
-	mData = "Hello World";
 	return mData;
 }

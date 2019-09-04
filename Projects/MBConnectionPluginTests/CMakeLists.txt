@@ -1,20 +1,13 @@
 add_executable(MBConnectionPluginTests)
 
-file(GLOB_RECURSE inc 
-    Include/*.c 
-    Include/*.cpp 
-    Include/*.h 
-    Include/*.hpp
+file(GLOB_RECURSE tst 
+    Tests/*.c 
+    Tests/*.cpp 
+    Tests/*.h 
+    Tests/*.hpp
 )
 
-file(GLOB_RECURSE src 
-    Source/*.c 
-    Source/*.cpp 
-    Source/*.h 
-    Source/*.hpp
-)
-
-file(GLOB pch
+file(GLOB src
     *.c 
     *.cpp 
     *.h 
@@ -22,25 +15,21 @@ file(GLOB pch
 )
 
 target_sources(MBConnectionPluginTests 
-PRIVATE
-    ${inc}
-    ${src}
-    ${pch}
+    PRIVATE
+        ${tst}
+        ${src}
 )
 
 target_include_directories(MBConnectionPluginTests
-PUBLIC
-	"Include"
-PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}
-	"Source"
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 target_link_libraries(MBConnectionPluginTests
-PRIVATE
-    MBConnectionPlugin
+    PRIVATE
+        MBConnectionPlugin
+        gtest
 )
 
-vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${inc}")
+vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${tst}")
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${src}")
-vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${pch}")
