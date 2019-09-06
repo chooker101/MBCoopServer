@@ -22,23 +22,23 @@ file(GLOB pch
 )
 
 target_sources(MBServer 
-PRIVATE
-    ${inc}
-    ${src}
-    ${pch}
+    PRIVATE
+        ${inc}
+        ${src}
+        ${pch}
 )
 
 target_include_directories(MBServer
-PUBLIC
-	"Include"
-PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}
-	"Source"
+    PUBLIC
+    	"Include"
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+    	"Source"
 )
 
 target_link_libraries(MBServer
-PRIVATE
-    MBConnectionPlugin
+    PRIVATE
+        MBConnectionPlugin
 )
 
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${inc}")

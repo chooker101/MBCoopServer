@@ -24,14 +24,13 @@ target_include_directories(HttpClient
     PUBLIC
 	    "Include"
     PRIVATE
-	    "Source"
+        "Source"
+        "${PROJECT_SOURCE_DIR}/Projects/MBConnectionPlugin/Include"
 )
 
 target_link_libraries(HttpClient
     PUBLIC
         asio
-    PRIVATE
-        MBConnectionPlugin
 )
 
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${inc}")

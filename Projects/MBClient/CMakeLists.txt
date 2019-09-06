@@ -39,7 +39,6 @@ target_include_directories(MBClient
 target_link_libraries(MBClient
     PRIVATE
         MBConnectionPlugin
-        HttpClient
 )
 
 vs_source_group(${CMAKE_CURRENT_SOURCE_DIR} "${inc}")
