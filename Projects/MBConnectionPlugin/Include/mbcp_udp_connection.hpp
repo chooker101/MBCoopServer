@@ -11,5 +11,6 @@ namespace mbcp
 		void RecieveData(std::string& rawData) override final;
 		void SendData(std::string& toSend) override final;
 		std::string& GetDataToSend() override final;
+		~UdpConnection() = default;
 	};
 }

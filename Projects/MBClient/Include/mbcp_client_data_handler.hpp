@@ -14,6 +14,6 @@ namespace mbcp
 		ClientDataHandler();
 		ConnectionInterface* GetHttpConnection();
 		ConnectionInterface* GetUdpConnection();
-
+		void HandleData(std::string& rawData, ConnectionType sender) override final;
 	};
 }
