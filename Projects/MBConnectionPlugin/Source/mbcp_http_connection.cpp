@@ -3,6 +3,11 @@
 
 using namespace mbcp;
 
+mbcp::HttpConnection::HttpConnection(DataHandlerInterface* dataHandler)
+{
+	mDataHandler = dataHandler;
+}
+
 void mbcp::HttpConnection::RecieveData(std::string& rawData)
 {
 

@@ -5,9 +5,8 @@ namespace mbcp
 {
 	class UdpConnection : public ConnectionInterface
 	{
-	private:
 	public:
-		UdpConnection() = default;
+		UdpConnection(DataHandlerInterface* dataHandler);
 		void RecieveData(std::string& rawData) override final;
 		void SendData(std::string& toSend) override final;
 		std::string& GetDataToSend() override final;

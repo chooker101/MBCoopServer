@@ -3,11 +3,11 @@
 
 using namespace mbcp;
 
-mbcp::ClientDataHandler::ClientDataHandler() : mUdpConnection(new UdpConnection())
+mbcp::ClientDataHandler::ClientDataHandler() : mUdpConnection(new UdpConnection(this)), mHttpConnection(new HttpConnection(this))
 {
 }
 
-ConnectionInterface * mbcp::ClientDataHandler::GetHttpConnection()
+ConnectionInterface* mbcp::ClientDataHandler::GetHttpConnection()
 {
 	return mHttpConnection;
 }
@@ -19,6 +19,12 @@ ConnectionInterface* mbcp::ClientDataHandler::GetUdpConnection()
 
 void mbcp::ClientDataHandler::HandleData(std::string& rawData, ConnectionType sender)
 {
-	if(sender == ConnectionType::http)
-
+	if (sender == ConnectionType::http)
+	{
+		mUdpConnection->SendData(rawData);
+	}
+	else if (sender == ConnectionType::udp)
+	{
+		mHttpConnection->SendData(rawData);
+	}
 }

@@ -28,7 +28,7 @@ target_include_directories(MBConnectionPlugin
 )
 
 target_link_libraries(MBConnectionPlugin
-    PRIVATE
+    PUBLIC
         HttpClient
 )
 

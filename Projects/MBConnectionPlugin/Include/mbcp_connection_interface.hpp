@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include<mbcp_data_handler_interface.hpp>
 
 namespace mbcp
 {
@@ -7,6 +8,7 @@ namespace mbcp
 	{
 	protected:
 		std::string mData = "";
+		DataHandlerInterface* mDataHandler;
 	public:
 		ConnectionInterface() = default;
 		virtual void RecieveData(std::string& rawData) = 0;
